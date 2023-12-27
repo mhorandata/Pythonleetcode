@@ -47,21 +47,18 @@ class Solution:
     def merge(self, nums1, m, nums2, n):
         person1 = m - 1
         person2 = n - 1
-        position = m + n - 1
 
         while person1 >= 0 and person2 >= 0:
             if nums1[person1] > nums2[person2]:
-                nums1[position] = nums1[person1]
+                nums1[person1 + person2 + 1] = nums1[person1]
                 person1 -= 1
             else:
-                nums1[position] = nums2[person2]
+                nums1[person1 + person2 + 1] = nums2[person2]
                 person2 -= 1
-            position -= 1
 
-        while person2 >= 0:
-            nums1[position] = nums2[person2]
-            person2 -= 1
-            position -= 1
+        if person2 >= 0:
+            nums1[:person2 + 1] = nums2[:person2 + 1]
+
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Solution breakdown:
 #
@@ -69,23 +66,16 @@ class Solution:
 # def merge(self, nums1, m, nums2, n):: This line defines a method named merge that takes in four arguments: self, nums1, m, nums2, and n.
 # person1 = m - 1: This line initializes a variable person1 to m - 1.
 # person2 = n - 1: This line initializes a variable person2 to n - 1.
-# position = m + n - 1: This line initializes a variable position to m + n - 1.
 # while person1 >= 0 and person2 >= 0:: This line starts a loop that will continue as long as both person1 and person2 are greater than or equal to 0.
 # if nums1[person1] > nums2[person2]:: This line checks if the value at index person1 in nums1 is greater than the value at index person2 in nums2.
-# nums1[position] = nums1[person1]: This line sets the value at index position in nums1 to the value at index person1 in nums1.
+# nums1[person1 + person2 + 1] = nums1[person1]: This line sets the value at index person1 + person2 + 1 in nums1 to the value at index person1 in nums1.
 # person1 -= 1: This line decrements the value of person1 by 1.
 # else:: This line is executed if the condition in the if statement is not met.
-# nums1[position] = nums2[person2]: This line sets the value at index position in nums1 to the value at index person2 in nums2.
+# nums1[person1 + person2 + 1] = nums2[person2]: This line sets the value at index person1 + person2 + 1 in nums1 to the value at index person2 in nums2.
 # person2 -= 1: This line decrements the value of person2 by 1.
-# position -= 1: This line decrements the value of position by 1.
-# while person2 >= 0:: This line starts a loop that will continue as long as person2 is greater than or equal to 0.
-# nums1[position] = nums2[person2]: This line sets the value at index position in nums1 to the value at index person2 in nums2.
-# person2 -= 1: This line decrements the value of person2 by 1.
-# position -= 1: This line decrements the value of position by 1.
-# This code is a Python implementation of the merge sort algorithm. 
-# The merge function takes two sorted arrays nums1 and nums2 and merges them into a single sorted array. 
-# The person1 and person2 variables are used to keep track of the current index in each array, 
-# and the position variable is used to keep track of the current index in the merged array. 
-# The function iterates through both arrays, comparing the values at the current indices and adding the smaller value to the merged array. 
-# Once one of the arrays has been fully iterated through, the remaining elements from the other array are added to the merged array. 
-# The resulting array is the merged and sorted version of the two input arrays.
+# if person2 >= 0:: This line checks if person2 is greater than or equal to 0.
+# nums1[:person2 + 1] = nums2[:person2 + 1]: This line sets the values in nums2 from index 0 to person2 + 1 to the corresponding values in nums1 from index 0 to person2 + 1.
+# This modified implementation uses two pointers instead of three, 
+# which reduces the number of variables used and makes the code more efficient. Additionally, 
+# it eliminates the need for the position variable, which further simplifies the code. 
+# The resulting implementation should be faster and more efficient than the original implementation.
