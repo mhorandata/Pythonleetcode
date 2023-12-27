@@ -45,33 +45,30 @@
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class Solution:
     def merge(self, nums1, m, nums2, n):
-        person1 = m - 1
-        person2 = n - 1
+        a, b, write_index = m-1, n-1, m + n - 1
 
-        while person1 >= 0 and person2 >= 0:
-            if nums1[person1] > nums2[person2]:
-                nums1[person1 + person2 + 1] = nums1[person1]
-                person1 -= 1
+        while b >= 0:
+            if a >= 0 and nums1[a] > nums2[b]:
+                nums1[write_index] = nums1[a]
+                a -= 1
             else:
-                nums1[person1 + person2 + 1] = nums2[person2]
-                person2 -= 1
+                nums1[write_index] = nums2[b]
+                b -= 1
 
-        if person2 >= 0:
-            nums1[:person2 + 1] = nums2[:person2 + 1]
+            write_index -= 1
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Solution breakdown:
 #
 # class Solution:: This line defines a class named Solution.
 # def merge(self, nums1, m, nums2, n):: This line defines a method named merge that takes in four arguments: self, nums1, m, nums2, and n.
-# person1 = m - 1: This line initializes a variable person1 to m - 1.
-# person2 = n - 1: This line initializes a variable person2 to n - 1.
-# while person1 >= 0 and person2 >= 0:: This line starts a loop that will continue as long as both person1 and person2 are greater than or equal to 0.
-# if nums1[person1] > nums2[person2]:: This line checks if the value at index person1 in nums1 is greater than the value at index person2 in nums2.
-# nums1[person1 + person2 + 1] = nums1[person1]: This line sets the value at index person1 + person2 + 1 in nums1 to the value at index person1 in nums1.
-# person1 -= 1: This line decrements the value of person1 by 1.
+# a, b, write_index = m-1, n-1, m + n - 1: This line initializes three variables a, b, and write_index to m-1, n-1, and m + n - 1, respectively.
+# while b >= 0:: This line starts a loop that will continue as long as b is greater than or equal to 0.
+# if a >= 0 and nums1[a] > nums2[b]:: This line checks if the value at index a in nums1 is greater than the value at index b in nums2.
+# nums1[write_index] = nums1[a]: This line sets the value at index write_index in nums1 to the value at index a in nums1.
+# a -= 1: This line decrements the value of a by 1.
 # else:: This line is executed if the condition in the if statement is not met.
-# nums1[person1 + person2 + 1] = nums2[person2]: This line sets the value at index person1 + person2 + 1 in nums1 to the value at index person2 in nums2.
-# person2 -= 1: This line decrements the value of person2 by 1.
-# if person2 >= 0:: This line checks if person2 is greater than or equal to 0.
-# nums1[:person2 + 1] = nums2[:person2 + 1]: This line sets the values in nums2 from index 0 to person2 + 1 to the corresponding values in nums1 from index 0 to person2 + 1.
+# nums1[write_index] = nums2[b]: This line sets the value at index write_index in nums1 to the value at index b in nums2.
+# b -= 1: This line decrements the value of b by 1.
+# write_index -= 1: This line decrements the value of write_index by 1.
