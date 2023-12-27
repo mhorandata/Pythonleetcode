@@ -75,7 +75,3 @@ class Solution:
 # person2 -= 1: This line decrements the value of person2 by 1.
 # if person2 >= 0:: This line checks if person2 is greater than or equal to 0.
 # nums1[:person2 + 1] = nums2[:person2 + 1]: This line sets the values in nums2 from index 0 to person2 + 1 to the corresponding values in nums1 from index 0 to person2 + 1.
-# This modified implementation uses two pointers instead of three, 
-# which reduces the number of variables used and makes the code more efficient. Additionally, 
-# it eliminates the need for the position variable, which further simplifies the code. 
-# The resulting implementation should be faster and more efficient than the original implementation.
