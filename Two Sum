@@ -1,0 +1,57 @@
+#Link: https://leetcode.com/problems/two-sum/description/
+#Two Sum leetcode question:
+#Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+#You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+#You can return the answer in any order.
+
+#Example 1:
+
+#Input: nums = [2,7,11,15], target = 9
+#Output: [0,1]
+#Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+#Example 2:
+
+#Input: nums = [3,2,4], target = 6
+#Output: [1,2]
+#Example 3:
+
+#Input: nums = [3,3], target = 6
+#Output: [0,1]
+ 
+#Constraints:
+
+#2 <= nums.length <= 104
+#-109 <= nums[i] <= 109
+#-109 <= target <= 109
+#Only one valid answer exists.
+
+#Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Solution: 
+class Solution:
+    def twoSum(self, nums, target):
+        num_dict = {}
+
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in num_dict:
+                return [num_dict[complement], i]
+            num_dict[num] = i
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Code Explanation: 
+# class Solution:: This line defines a class named Solution.
+# def twoSum(self, nums, target):: This line defines a method named twoSum that takes in three arguments: self, nums, and target.
+# num_dict = {}: This line initializes an empty dictionary num_dict.
+# for i, num in enumerate(nums):: This line starts a loop that iterates through the elements of nums along with their indices.
+# complement = target - num: This line computes the complement of num with respect to target.
+# if complement in num_dict:: This line checks if the complement is already in num_dict.
+# return [num_dict[complement], i]: This line returns a list containing the indices of the two numbers that add up to target.
+# num_dict[num] = i: This line adds the current number and its index to num_dict.
+# This implementation uses a dictionary to store the indices of the numbers in nums.
+# It iterates through the elements of nums and checks if the complement of the current
+# element is already in the dictionary. If it is, it returns the indices of the
+# two numbers that add up to target.
+# If it is not, it adds the current number and its index to the dictionary.
+# The resulting implementation has a time complexity of O(n).
+
