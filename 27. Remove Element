@@ -1,0 +1,48 @@
+#Link: https://leetcode.com/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150
+#Problem:
+
+#27. Remove Element
+#Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+#Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+
+#Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
+#Return k.
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Solution:
+
+class Solution(object):
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        for i in range(len(nums) - 1, -1, -1):
+          if nums[i] == val:
+           nums.pop(i)
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Solution Explanation: 
+#Iterate in Reverse: Loop through the list in reverse order to avoid skipping elements when removing.
+#Code breakdown:
+
+#range(...): This is a function in Python that generates a sequence of numbers.
+
+#len(nums): This gets the length (number of elements) of the list nums.
+
+# - 1, -1, -1:
+#First -1: Starting position
+
+#This is the starting position for the range. In Python, when you use range(start, stop, step), it generates numbers starting from start. So, the first -1 sets the starting position for the range.
+#Example: If len(nums) is 5, then len(nums) - 1 is 4, so the range starts from 4.
+#Second -1: Ending position
+
+#This is the ending position for the range. It determines where the range stops.
+#Since range generates numbers up to, but not including, the specified end value, -1 means it will stop just before reaching 0.
+#Example: If len(nums) is 5, then the range stops just before 0, so it includes values 4, 3, 2, 1, 0.
+#Third -1: Step size
+
+#This is the step size, indicating how the range progresses from the starting position to the ending position. A step size of -1 means it goes backward.
+#Example: With a step of -1, the range moves from the starting position to the ending position in reverse order.
+#Putting it all together, the range range(len(nums) - 1, -1, -1) creates a sequence of numbers that starts from the last index of the list nums and goes down to 0,
+#moving backward one step at a time. Each -1 plays a role in defining the starting position, ending position, and the direction of movement in the range.
